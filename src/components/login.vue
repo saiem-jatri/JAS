@@ -5,13 +5,13 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Email
         </label>
-        <input v-model="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+        <input v-model="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Password
         </label>
-        <input v-model="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="**********">
+        <input v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="**********">
       </div>
       <div class="flex items-center justify-between">
         <button class="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
@@ -24,33 +24,30 @@
 </template>
 
 <script>
+
 import axios from "axios";
+// import login from "@/store/modules/login";
+
 export default {
   name: "login",
   data(){
     return {
-      Email:'',
-      Password:'',
-      range: {
-        start: new Date(2020, 0, 1),
-        end: new Date(2020, 0, 5)
-      }
+      username:'',
+      password:'',
     }
   },
   methods: {
-    handleSubmit(){
-      const data ={
-        Email:this.Email,
-        Password:this.Password
-      };
-      axios.post("http://localhost:8000/register",data)
-      .then(
-          res =>{
-            console.log(res);
-          }
-      )
-    }
+   async handleSubmit(){
+     const response = await axios.post('http://localhost:3333/login',{
+       username:this.username,
+       password:this.password
+
+     });
+    localStorage.setItem('token', response.data.token);
+    this.$router.push('/');
+   }
   }
+
 }
 </script>
 
