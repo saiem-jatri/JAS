@@ -5,16 +5,21 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Email
         </label>
-        <input v-model="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+        <input v-model="username"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               id="username" type="text" placeholder="Username">
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Password
         </label>
-        <input v-model="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="**********">
+        <input v-model="password"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               id="password" type="password" placeholder="**********">
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit">
           Sign In
         </button>
       </div>
@@ -26,26 +31,36 @@
 <script>
 
 import axios from "axios";
+import store from "@/store";
+import {mapActions} from "vuex"
 // import login from "@/store/modules/login";
 
 export default {
   name: "login",
-  data(){
+  data() {
     return {
-      username:'',
-      password:'',
+      username: '',
+      password: '',
     }
   },
   methods: {
-   async handleSubmit(){
-     const response = await axios.post('http://localhost:3333/login',{
-       username:this.username,
-       password:this.password
+    ...mapActions('login', ['getUserFromApi']),
+    async handleSubmit() {
 
-     });
-    localStorage.setItem('token', response.data.token);
-    this.$router.push('/');
-   }
+      const response = await axios.post('http://localhost:3333/login', {
+        username: this.username,
+        password: this.password
+
+      }, {
+        withCredentials: true //correct
+      });
+      console.log(response);
+      localStorage.setItem('token', response.data.token);
+      this.getUserFromApi(response.data.userObj)
+      // await store.dispatch('getUserFromApi',response.data.user);
+      await this.$router.push('/');
+      console.log(store.state.login.userData)
+    }
   }
 
 }

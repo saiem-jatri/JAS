@@ -1,15 +1,34 @@
-import axios from 'axios';
+const state = {
+  userData: null,
+}
 
-axios.default.headers.common['Authorization'] = '\'Bearer \' + localStorage.getItem(\'token\')'
-const state={};
-const getters={};
-const actions ={};
+const getters = {
+  getUser(state){
+    return state.userData;
+  }
+}
 
-const mutations ={};
+const actions = {
+  getUserFromApi(context,user){
+    context.commit('SetUser',user);
+  }
+}
+
+const mutations = {
+  SetUser(state,user){
+    state.userData=user;
+    console.log(state.userData)
+  },
+  SetLogOut(state){
+    state.userData=null
+  }
+}
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,
-  mutations
-};
+  mutations,
+}
+

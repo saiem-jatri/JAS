@@ -1,18 +1,13 @@
-import Vuex from 'vuex';
-import Vue from 'vue';
-// import todos from './modules/todos';
+import { createStore } from "vuex"
+import createPersistedState from "vuex-persistedstate";
+
 import login from  './modules/login'
 
-
-
-
-//load Vuex
-Vue.use(Vuex);
-
-//create Store
-
-export default new Vuex.Store({
-  modules:{
+const store = createStore({
+  plugins: [createPersistedState()],
+  modules: {
     login
   }
 })
+
+export default store;

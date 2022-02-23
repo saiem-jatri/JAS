@@ -1,12 +1,12 @@
 <template>
-
- <Home v-if="user" />
+<!-- <Home />-->
   <TimeCard/>
   <UserData/>
 </template>
 
 <script>
-import Home from "@/components/TimeCard.vue";
+import {mapGetters} from 'vuex'
+// import Home from "@/components/TimeCard.vue";
 import UserData from "@/components/UserData.vue";
 import meeting from "@/components/meeting.vue";
 import TimeCard from "@/components/TimeCard";
@@ -14,10 +14,11 @@ import TimeCard from "@/components/TimeCard";
 
 export default {
   name: 'UserPage',
-  props:['user'],
-
+  computed:{
+    ...mapGetters('login', ['getUser'])
+  },
   components: {
-    Home,
+    // Home,
     UserData,
     meeting,
     TimeCard

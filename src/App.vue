@@ -1,7 +1,7 @@
 <template>
-  <Header :user="user" />
+  <Header />
   <div class="container">
-    <router-view :user="user" />
+    <router-view />
   </div>
 </template>
 
@@ -14,16 +14,11 @@ export default {
   components: {
     Header,
   },
-  data(){
-    return{
-      user:null,
-      props:['user']
-    }
-  },
-  async created(){
-    const response = await axios.get('user');
-    console.log(response)
-  },
+  //
+  // async created(){
+  //   const response = await axios.get('http://localhost:3333/login');
+  //   this.$store.dispatch('user',response.data);
+  // },
 
 };
 </script>
