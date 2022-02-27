@@ -32,8 +32,7 @@ export default {
   },
   methods: {
     ...mapActions('attendance',['addAttendance']),
-    onSubmit(e){
-      e.preventDefault();
+    onSubmit(){
       // creating timestamp
       const time = this.addTime;
       console.log(time)

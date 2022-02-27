@@ -11,7 +11,10 @@ const getters ={
 
 const actions ={
   async fetchAttendance ({commit}){
-    const response = await axios.get('http://localhost:3333/user/attendance/?from=2022-02-16&to=2022-02-28', { withCredentials: true });
+    const date = new Date();
+    const to = new Date().toISOString().split("T")[0];
+    const from = new Date(new Date().setDate(date.getDate() - 8)).toISOString().split("T")[0];
+    const response = await axios.get(`http://localhost:3333/user/attendance/?from=${from}&to=${to}`, { withCredentials: true });
     commit('setAttendance',response.data);
   },
   async addAttendance({commit},timestamp){

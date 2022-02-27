@@ -3,13 +3,15 @@ import createPersistedState from "vuex-persistedstate";
 
 import login from  './modules/login'
 import attendance from './modules/attendance'
-import attendence from "@/store/modules/attendance";
+import meeting from "@/store/modules/meeting";
+
 
 const store = createStore({
   plugins: [createPersistedState()],
   modules: {
     login,
-    attendance
+    attendance,
+    meeting
   }
 })
 

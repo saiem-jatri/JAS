@@ -12,9 +12,9 @@
 import {mapGetters} from 'vuex'
 // import Home from "@/components/TimeCard.vue";
 import UserData from "@/components/UserData.vue";
-import meeting from "@/components/meeting.vue";
+import meeting from "@/components/MeetingShow.vue";
 import TimeCard from "@/components/TimeCard";
-import FILTER from "@/components/FILTER";
+import FILTER from "@/components/AttendnanceFilter";
 
 
 export default {

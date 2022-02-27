@@ -9,7 +9,7 @@
     </div>
     <div v-else class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
       <router-link class="mx-2" to="/">Home</router-link>
-      <router-link class="mx-2" to="/meeting">Meeting</router-link>
+      <router-link class="mx-2" to="/meetingPage">Meeting</router-link>
       <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout</a>
     </div>
   </nav>
