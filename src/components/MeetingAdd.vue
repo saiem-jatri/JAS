@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center items-center mx-auto">
-      <form @submit="onSubmit" class="bg-green-100  shadow-md rounded px-8 mt-5 mb-5">
+      <form @submit ="onSubmit" class="bg-green-100  shadow-md rounded px-8 mt-5 mb-5">
         <div class="flex gap-4">
           <div class="mb-4">
             <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
@@ -52,12 +52,12 @@ export default {
   methods:{
     ...mapActions('meeting',['addMeeting']),
     onSubmit(){
-      const meetingDate = this.meetingDate;
-      const fromTime= meetingDate + "T" +this.fromTime;
-      const toTime = meetingDate + "T" +this.toTime;
+      const date = this.meetingDate;
+      const fromTime= this.fromTime;
+      const toTime = this.toTime;
       const comments = this.comments;
-      console.log(fromTime, toTime, comments);
-      this.addMeeting({fromTime, toTime, comments});
+      this.addMeeting({date, fromTime, toTime, comments});
+      console.log(this.addMeeting)
     }
   }
 }

@@ -12,6 +12,7 @@
       <router-link class="mx-2" to="/meetingPage">Meeting</router-link>
       <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout</a>
     </div>
+
   </nav>
 </template>
 
