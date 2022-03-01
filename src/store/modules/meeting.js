@@ -24,13 +24,9 @@ const actions={
     commit('setMeetingFilter',response.data)
   },
 
-  async updateMeetingFilter({commit}, {date,fromTime, toTime,comments,id}){
-    console.log(date)
-    console.log(fromTime)
-    console.log(toTime)
-    console.log(comments)
-    console.log(id)
-    const response = await axios.put(`http://localhost:3333/user/meeting/${id}`,{date,fromTime,toTime,comments}, {withCredentials: true});
+  async updateMeetingFilter({commit}, payloadss){
+    console.log("=======>",payloadss)
+    const response = await axios.put(`http://localhost:3333/user/meeting/${payloadss.mainId}`,{payloadss}, {withCredentials: true});
     commit('updateFilter',response.data)
   }
 
