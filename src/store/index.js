@@ -4,6 +4,8 @@ import createPersistedState from "vuex-persistedstate";
 import login from  './modules/login'
 import attendance from './modules/attendance'
 import meeting from "@/store/modules/meeting";
+import admin from '../store/modules/admin';
+import adminAllUser from '../store/modules/adminAllUser'
 
 
 const store = createStore({
@@ -11,7 +13,9 @@ const store = createStore({
   modules: {
     login,
     attendance,
-    meeting
+    meeting,
+    admin,
+    adminAllUser
   }
 })
 

@@ -58,7 +58,7 @@ export default {
       localStorage.setItem('token', response.data.token);
       this.getUserFromApi(response.data.userObj)
       // await store.dispatch('getUserFromApi',response.data.user);
-      await this.$router.push('/');
+      await this.$router.push('/HomePage');
       console.log(store.state.login.userData)
     }
   }

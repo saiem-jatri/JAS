@@ -7,9 +7,14 @@
 
       <router-link class="mx-2" to="/login">login</router-link>
     </div>
-    <div v-else class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
+    <div v-if="getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
       <router-link class="mx-2" to="/">Home</router-link>
       <router-link class="mx-2" to="/meetingPage">Meeting</router-link>
+      <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout</a>
+    </div>
+    <div v-if="getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
+      <router-link class="mx-2" to="./adminHomePage">adminHomePage </router-link>
+      <router-link class="mx-2" to="./allUser">allUser </router-link>
       <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout</a>
     </div>
 
@@ -25,7 +30,7 @@ export default {
     handleClick(){
       localStorage.removeItem('token');
       this.SetLogOut()
-      this.$router.push('/login');
+      this.$router.push('/');
     }
   },
   computed:{
