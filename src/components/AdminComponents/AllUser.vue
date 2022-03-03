@@ -15,19 +15,13 @@
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">lineManager</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nid</th>
+              <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Update</th>
 
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
 
             <tr class="text-center" v-for="userInfo in getAllAdminUsers.users" :key="userInfo">
-<!--              <td class="px-6 py-4 whitespace-nowrap">-->
-<!--                <div class="flex items-center">-->
-<!--                  <div class="ml-4">-->
-<!--                    <div class="text-sm font-medium text-gray-900">{{userInfo.jatriId}}</div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </td>-->
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
@@ -77,28 +71,63 @@
                   </div>
                 </div>
               </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <!--                    <span  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{meet.status}}</span>-->
+                <button @click="updateUserData(userInfo)" type="button" class="shadow-sm bg-red-200 flex items-center px-2 rounded-lg">Update <span><i class="fa fa-filter"></i></span> </button>
 
-
-
-
+              </td>
             </tr>
 
-
-            <!-- More people... -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
+  <AllUserUpdateModal
+      v-if="isUpdateOpen"
+      @close="closeUpdateModal()"
+      :allUserData="selectallUserData"
+  />
 </template>
-
 <script>
+import AllUserUpdateModal from "./AllUserUpdateModal.vue"
 import {mapActions,mapGetters} from 'vuex'
 export default {
+  data(){
+    return{
+      isUpdateOpen:false,
+      selectallUserData:{
+        name:'',
+        email:'',
+        mobile:'',
+        designation:'',
+        lineManager:'',
+        role:'',
+        nid:'',
+        _id:''
+      }
+    }
+  },
+  components: {AllUserUpdateModal},
   name: "AllUser",
   methods: {
-    ...mapActions('adminAllUser',['fetchallAdminUsers'])
+    ...mapActions('adminAllUser',['fetchallAdminUsers']),
+    closeUpdateModal() {
+      this.isUpdateOpen = false
+    },
+    updateUserData(userInfo){
+      console.log("iddddddd is =>",userInfo._id)
+      this.isUpdateOpen = true;
+      this.selectallUserData.name=userInfo.name;
+      this.selectallUserData.email=userInfo.email;
+      this.selectallUserData.mobile=userInfo.mobile;
+      this.selectallUserData.designation=userInfo.designation;
+      this.selectallUserData.lineManager=userInfo.lineManager;
+      this.selectallUserData.role=userInfo.role;
+      this.selectallUserData.nid=userInfo.nid;
+      this.selectallUserData._id=userInfo._id;
+    }
   },
   computed:{
     ...mapGetters('adminAllUser',['getAllAdminUsers'])

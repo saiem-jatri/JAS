@@ -1,5 +1,5 @@
 <template>
-<allUser/>
+<allUser />
 </template>
 
 <script>
