@@ -105,7 +105,6 @@ export default {
     this.allData.role=this.allUserData.role;
     this.allData.nid=this.allUserData.nid;
     this.allData._id=this.allUserData._id;
-    console.log("MyTest ====>",this.allData)
   }
 }
 

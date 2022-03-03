@@ -1,28 +1,34 @@
 <template>
-  <nav class="flex justify-between bg-primary p-4 ">
-    <div class="text-4xl font-semibold">
-      <a href="./"><img :src="image2" alt="" class="w-20"></a>
-    </div>
-    <div v-if="!getUser" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
+  <nav class="bg-primary p-4 ">
+    <div class="flex justify-between">
+      <div class="text-4xl font-semibold">
+        <a href="./"><img :src="image2" alt="" class="w-20"></a>
+      </div>
+      <div v-if="!getUser" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
 
-      <router-link class="mx-2" to="/login">login</router-link>
+        <router-link class="mx-2" to="/login">login</router-link>
+      </div>
+      <div v-if="getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
+        <router-link class="mx-2" to="/HomePage">Home</router-link>
+        <router-link class="mx-2" to="/meetingPage">Meeting</router-link>
+        <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout {{getUser.name}}</a>
+      </div>
+      <div v-if="getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
+        <router-link class="mx-2" to="./adminHomePage">adminHomePage </router-link>
+        <router-link class="mx-2" to="./allUser">allUser </router-link>
+        <router-link class="mx-2" to="./adminAttendnance">AdminAttendnance </router-link>
+        <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout {{getUser.name}}</a>
+<!--        <LogoutDropdown/>-->
+      </div>
     </div>
-    <div v-if="getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
-      <router-link class="mx-2" to="/">Home</router-link>
-      <router-link class="mx-2" to="/meetingPage">Meeting</router-link>
-      <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout</a>
-    </div>
-    <div v-if="getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
-      <router-link class="mx-2" to="./adminHomePage">adminHomePage </router-link>
-      <router-link class="mx-2" to="./allUser">allUser </router-link>
-      <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout</a>
-    </div>
+
 
   </nav>
 </template>
 
 <script>
 import {mapGetters, mapMutations} from 'vuex'
+import LogoutDropdown from "@/components/LogoutDropdown";
 export default {
   name: 'Header',
   methods:{
@@ -32,6 +38,9 @@ export default {
       this.SetLogOut()
       this.$router.push('/');
     }
+  },
+  components: {
+    LogoutDropdown
   },
   computed:{
     ...mapGetters('login', ['getUser'])

@@ -5,6 +5,7 @@ import login from "@/components/Login";
 import meeting from "@/components/MeetingShow";
 import adminHomePage from "@/views/adminHomePage";
 import allUser from "@/components/AdminComponents/AllUser";
+import adminAttendnancePage from "@/views/adminAttendancePage";
 
 
 const routes=[
@@ -13,7 +14,7 @@ const routes=[
   {path:'/meetingPage',component:meetingPage},
   {path:'/adminHomePage',component:adminHomePage},
   {path:'/allUser',component:allUser},
-,
+  {path:'/adminAttendnance',component: adminAttendnancePage}
 ]
 const router = createRouter({
   history: createWebHistory(),

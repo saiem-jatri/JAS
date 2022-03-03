@@ -52,8 +52,8 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">{{userInfo.lineManager}}</div>
+                  <div  class="ml-4" >
+                    <div class="text-sm font-medium text-gray-900">{{userInfo.lineManager.name}}</div>
                   </div>
                 </div>
               </td>
@@ -117,7 +117,6 @@ export default {
       this.isUpdateOpen = false
     },
     updateUserData(userInfo){
-      console.log("iddddddd is =>",userInfo._id)
       this.isUpdateOpen = true;
       this.selectallUserData.name=userInfo.name;
       this.selectallUserData.email=userInfo.email;
