@@ -17,6 +17,7 @@
         <router-link class="mx-2" to="./adminHomePage">adminHomePage </router-link>
         <router-link class="mx-2" to="./allUser">allUser </router-link>
         <router-link class="mx-2" to="./adminAttendnance">AdminAttendnance </router-link>
+        <router-link class="mx-2" to="./allAttendance">All Attendance </router-link>
         <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout {{getUser.name}}</a>
 <!--        <LogoutDropdown/>-->
       </div>
