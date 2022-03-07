@@ -13,11 +13,14 @@ const actions = {
     const response = await axios.get(`http://localhost:3333/admin/attendance/all`, {withCredentials: true});
     commit('setAttendanceToday', response.data);
   },
-  async fetchDetails({commit},id) {
+  async fetchDetails({commit}, id) {
     const response = await axios.get(`http://localhost:3333/admin/attendance/${id}`, {withCredentials: true});
-    console.log("Details",response.data)
     commit('setAllUserDetails', response.data);
-  }
+  },
+  async fetchFilterDetails({commit}, data) {
+    const response = await axios.get(`http://localhost:3333/admin/attendance/${data.id}?from=${data.from}&to=${data.to}`, {withCredentials: true});
+    commit('setAllUserDetails', response.data);
+  },
 
 }
 const mutations ={

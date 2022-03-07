@@ -38,7 +38,6 @@ export default {
     ...mapActions('attendance', ['addFilter'])
   },
   methods:{
-
     onSubmit(){
      return this.addFilter(this.dateRange);
     }

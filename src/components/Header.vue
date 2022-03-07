@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-primary p-4 ">
+  <nav class="bg-primary py-3 px-3">
     <div class="flex justify-between">
       <div class="text-4xl font-semibold">
         <a href="./"><img :src="image2" alt="" class="w-20"></a>
@@ -8,17 +8,26 @@
 
         <router-link class="mx-2" to="/login">login</router-link>
       </div>
-      <div v-if="getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
-        <router-link class="mx-2" to="/HomePage">Home</router-link>
-        <router-link class="mx-2" to="/meetingPage">Meeting</router-link>
-        <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout {{getUser.name}}</a>
+      <div v-if="getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="/HomePage">Home</router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="/meetingPage">Meeting</router-link>
+        <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm hover:text-gray-300 shadow-lg" >logout</a>
+        <p class="absolute top-0 right-2 text-xs">{{getUser.name}}</p>
+        <div class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">
+
+        </div>
       </div>
-      <div v-if="getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white">
-        <router-link class="mx-2" to="./adminHomePage">adminHomePage </router-link>
-        <router-link class="mx-2" to="./allUser">allUser </router-link>
-        <router-link class="mx-2" to="./adminAttendnance">AdminAttendnance </router-link>
-        <router-link class="mx-2" to="./allAttendance">All Attendance </router-link>
-        <a href="javascript:void(0)" @click="handleClick" class="mx-2" >logout {{getUser.name}}</a>
+      <div v-if="getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminHomePage">adminHomePage </router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allUser">allUser </router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminAttendnance">AdminAttendnance </router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allAttendance">All Attendance </router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allMeeting">All Meeting </router-link>
+        <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm hover:text-gray-300 shadow-lg" >logout </a>
+        <p class="absolute top-0 right-2 text-xs">{{getUser.name}}</p>
+        <div class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">
+
+        </div>
 <!--        <LogoutDropdown/>-->
       </div>
     </div>
