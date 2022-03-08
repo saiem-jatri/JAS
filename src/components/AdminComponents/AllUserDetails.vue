@@ -79,6 +79,7 @@
             <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-green-600 text-white uppercase tracking-wider">Present</th>
             <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-red-600 text-white uppercase tracking-wider">Late</th>
             <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-yellow-600 text-white uppercase tracking-wider">Absent</th>
+            <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-pink-600 text-white uppercase tracking-wider">Percentage</th>
           </tr>
           </thead>
           <tbody class="bg-white divide divide-gray-200 bg-gray-200 text-white">
@@ -86,7 +87,7 @@
             <td class="px-6 py-4 whitespace-nowrap divide-x divide-black text-center ">
               <div class="flex items-center">
                 <div class="ml-4">
-                  <div class="text-sm font-medium text-gray-900 ">{{allUserDetails.attendanceStat.totalDays}} </div>
+                  <div class="text-sm font-medium text-gray-900 ">{{allUserDetails.attendanceStat.weekdays}} </div>
                 </div>
               </div>
             </td>
@@ -107,6 +108,9 @@
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="text-sm text-gray-900">{{allUserDetails.attendanceStat.absent}}</div>
             </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-900">{{allUserDetails.attendanceStat.presentPercentage}}</div>
+           </td>
           </tr>
           </tbody>
         </table>

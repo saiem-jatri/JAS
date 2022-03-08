@@ -8,7 +8,7 @@
 
         <router-link class="mx-2" to="/login">login</router-link>
       </div>
-      <div v-if="getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
+      <div v-if="getUser && getUser.role ==='user'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
         <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="/HomePage">Home</router-link>
         <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="/meetingPage">Meeting</router-link>
         <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm hover:text-gray-300 shadow-lg" >logout</a>
@@ -17,7 +17,7 @@
 
         </div>
       </div>
-      <div v-if="getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
+      <div v-if="getUser && getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
         <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminHomePage">adminHomePage </router-link>
         <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allUser">allUser </router-link>
         <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminAttendnance">AdminAttendnance </router-link>

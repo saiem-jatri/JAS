@@ -72,6 +72,7 @@
           <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-green-600 text-white uppercase tracking-wider">Present</th>
           <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-red-600 text-white uppercase tracking-wider">Late</th>
           <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-yellow-600 text-white uppercase tracking-wider">Absent</th>
+          <th scope="col" class="px-6 py-3 text-center text-xs font-medium bg-pink-600 text-white uppercase tracking-wider">Percentage</th>
         </tr>
         </thead>
         <tbody class="bg-white divide divide-gray-200 bg-gray-200 text-white">
@@ -99,6 +100,9 @@
           </td>
           <td class="px-6 py-4 whitespace-nowrap">
             <div class="text-sm text-gray-900">{{allUserAttendanceToday.attendanceStat.absent}}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{allUserAttendanceToday.attendanceStat.presentPercentage}}</div>
           </td>
         </tr>
 

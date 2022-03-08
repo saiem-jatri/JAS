@@ -35,10 +35,9 @@
             <span :class="meetings.status === 'pending'? 'bg-yellow-200 text-red-800' : 'bg-green-200 text-green-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"> {{meetings.status}} </span>
 
           </td>
-
           <td class="px-6 py-4 whitespace-nowrap">
             <!--                    <span  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{meet.status}}</span>-->
-            <button type="button" class="shadow-sm bg-red-200 flex items-center px-2 rounded-lg">Update <span><i class="fa fa-filter"></i></span> </button>
+            <button @click="updateMeeting(meetings)" type="button" class="shadow-sm bg-red-200 flex items-center px-2 rounded-lg">Update <span><i class="fa fa-filter"></i></span> </button>
 
           </td>
         </tr>
@@ -46,18 +45,49 @@
       </table>
     </div>
   </div>
+<UpdateAllUserMeeting
+    v-if="isUpdateOpen"
+    @close="closeUpdateModal()"
+    :meetingData="selectedMeetingData"
+/>
 </template>
 
 <script>
+import UpdateAllUserMeeting from "@/components/AdminComponents/UpdateAllUserMeeting.vue"
 import {mapActions,mapGetters} from "vuex";
 
+
 export default {
+  components: {UpdateAllUserMeeting},
+  data(){
+    return{
+      isUpdateOpen: false,
+      selectedMeetingData:{
+        date:'',
+        fromTime:'',
+        toTime:'',
+        comments:'',
+        id:''
+      }
+    }
+  },
   name: "AllUserMeeting",
   computed:{
     ...mapGetters('allEmployeeMeeting',['allUserMeeting'])
   },
   methods:{
-    ...mapActions('allEmployeeMeeting',['fetchAllMeeting'])
+    ...mapActions('allEmployeeMeeting',['fetchAllMeeting']),
+    updateMeeting(meetings){
+      this.isUpdateOpen = true;
+      this.selectedMeetingData.date=meetings.date;
+      this.selectedMeetingData.fromTime=meetings.fromTime;
+      this.selectedMeetingData.toTime=meetings.toTime;
+      this.selectedMeetingData.comments=meetings.comments;
+      this.selectedMeetingData.id=meetings.meetingId;
+    },
+    closeUpdateModal() {
+      this.isUpdateOpen = false
+    }
   },
   created() {
     this.fetchAllMeeting()
