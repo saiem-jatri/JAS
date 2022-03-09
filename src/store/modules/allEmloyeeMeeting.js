@@ -15,11 +15,16 @@ const actions={
   async updateAllMeetingFilter({commit}, payloads){
     const response = await axios.put(`http://localhost:3333/admin/meeting/${payloads.mainId}`,{ ...payloads}, {withCredentials: true});
     commit('updateFilter',response.data)
+  },
+  async meetingDecison({commit},payloads){
+    const response = await axios.put(`http://localhost:3333/admin/meeting/status/${payloads.id}?status=${payloads.status}`,{ ...payloads}, {withCredentials: true});
+    commit('updateMeetingDecision',response.data)
   }
 }
 const mutations={
   setAllMeetings:(state,resMeeting) =>(state.allMeeting=resMeeting),
-  updateFilter:(state,updMeeting) =>(state.allMeeting=updMeeting)
+  updateFilter:(state,updMeeting) =>(state.allMeeting=updMeeting),
+  updateMeetingDecision:(state,decision)=>(state.allMeeting=decision)
 }
 
 

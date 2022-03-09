@@ -27,7 +27,7 @@ export default {
   name: "AdminAttendnance",
   data(){
     return{
-      addTime:''
+      addTime:new Date().toString().split(" ")[4].slice(0,5),
     }
   },
   methods: {
