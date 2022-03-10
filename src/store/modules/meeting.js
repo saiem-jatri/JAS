@@ -1,6 +1,8 @@
 import async from "async";
 import axios from "axios";
 
+import toastMessage from "../common/toaster";
+
 const state = {
   userMeeting: [],
 }
@@ -15,6 +17,7 @@ const actions={
   },
   async addMeeting ({commit},{date,fromTime,toTime,comments}){
     const response = await axios.post('http://localhost:3333/user/meeting/',{date,fromTime,toTime,comments}, { withCredentials: true });
+    toastMessage(response);
     commit('newMeetings',response.data)
   },
 
@@ -27,6 +30,7 @@ const actions={
   async updateMeetingFilter({commit}, payloadss){
     console.log("=======>",payloadss)
     const response = await axios.put(`http://localhost:3333/user/meeting/${payloadss.mainId}`,{ ...payloadss}, {withCredentials: true});
+    toastMessage(response);
     commit('updateFilter',response.data)
   }
 

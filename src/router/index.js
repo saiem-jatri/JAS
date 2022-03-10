@@ -9,7 +9,7 @@ import adminAttendnancePage from "@/views/adminAttendancePage";
 import allAttendance from "@/components/AdminComponents/AllAttendance";
 import AllUserDetails from "@/components/AdminComponents/AllUserDetails";
 import AllUserMeeting from "@/components/AdminComponents/AllUserMeeting";
-import AdminMeeting from "@/components/AdminComponents/AdminMeeting";
+import AdminMeeting from "@/components/AdminComponents/AdminMeetingAdd";
 
 
 const routes=[

@@ -1,5 +1,6 @@
 import async from "async";
 import axios from "axios";
+import toastMessage from "@/store/common/toaster";
 
 const state = {
   userAttendance: [],
@@ -19,6 +20,7 @@ const actions ={
   },
   async addAttendance({commit},timestamp){
     const response = await axios.post('http://localhost:3333/user/attendance',{timestamp}, { withCredentials: true });
+    toastMessage(response);
     commit('newAttendance',response.data)
   },
   async addFilter({commit}, {dateRange}){

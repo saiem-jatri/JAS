@@ -1,4 +1,5 @@
 import axios from "axios";
+import toastMessage from "../common/toaster";
 
 const state={
   dropList:[],
@@ -11,14 +12,12 @@ const state={
   const actions= {
     async fetchdropList({commit}) {
       const response = await axios.get('http://localhost:3333/admin/user/list', {withCredentials: true});
-      console.log("res =====>",response.data)
       commit('setdropList', response.data)
     },
 
     async addUser ({commit},{jatriId,name,email,password,designation,lineManager,role,nid,mobile}){
       const response = await axios.post('http://localhost:3333/admin/user/',{jatriId,name,email,password,designation,lineManager,role,nid,mobile}, { withCredentials: true });
-      console.log(response.data)
-      console.log(lineManager)
+      toastMessage(response);
       commit('setnewUser',response.data)
     }
   };

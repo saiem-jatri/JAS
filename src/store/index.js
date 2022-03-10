@@ -8,6 +8,7 @@ import admin from '../store/modules/admin';
 import adminAllUser from '../store/modules/adminAllUser'
 import allEmployee from "@/store/modules/allEmployee";
 import allEmployeeMeeting from "@/store/modules/allEmloyeeMeeting"
+import adminMeeting from "@/store/modules/adminMeeting";
 
 
 const store = createStore({
@@ -19,7 +20,8 @@ const store = createStore({
     admin,
     adminAllUser,
     allEmployee,
-    allEmployeeMeeting
+    allEmployeeMeeting,
+   adminMeeting
   }
 })
 

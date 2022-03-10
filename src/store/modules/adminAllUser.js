@@ -1,4 +1,5 @@
 import axios from "axios";
+import toastMessage from "../common/toaster";
 
 const state={
   allAdminUsers:[],
@@ -10,13 +11,11 @@ const getters={
 const actions={
   async fetchallAdminUsers({commit}) {
     const response = await axios.get('http://localhost:3333/admin/user/', {withCredentials: true});
-    console.log("res =====>",response.data)
     commit('setallAdminUsers', response.data)
   },
   async updateUserData({commit}, payloads){
-    console.log(">>>>", payloads._id)
     const response = await axios.put(`http://localhost:3333/admin/user/${payloads._id}`,{ ...payloads}, {withCredentials: true});
-
+    toastMessage(response);
     commit('setUpdateUserData',response.data)
   }
 }
