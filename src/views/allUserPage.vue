@@ -1,10 +1,13 @@
 <template>
-<allUser />
+<AllUser />
 </template>
 
 <script>
+import AllUser from "@/components/AdminComponents/AllUser";
+
 export default {
-  name: "allUserPage"
+  name: "allUserPage",
+  components:AllUser
 }
 </script>
 

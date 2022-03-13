@@ -18,12 +18,12 @@
         </div>
       </div>
       <div v-if="getUser && getUser.role === 'admin'" class="flex gap-4 text-2xl font-semibold justify-center items-center text-white relative">
-        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminHomePage">adminHomePage </router-link>
-        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allUser">allUser </router-link>
+<!--        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminHomePage">adminHomePage </router-link>-->
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allUser">User's </router-link>
         <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./adminAttendnance">AdminAttendnance </router-link>
-        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allAttendance">All Attendance </router-link>
-        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allMeeting">All Meeting </router-link>
-        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./AdminMeeting">Admin Meeting </router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allAttendance">Attendance's </router-link>
+        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./allMeeting">Meeting's </router-link>
+<!--        <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="./AdminMeeting">Admin Meeting </router-link>-->
         <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm hover:text-gray-300 shadow-lg" >logout </a>
         <p class="absolute top-0 right-2 text-xs">{{getUser.name}}</p>
         <div class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">

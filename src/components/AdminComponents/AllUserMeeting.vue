@@ -1,5 +1,8 @@
 <template>
   <div class="flex justify-center item-center w-full">
+    <div class="absolute bottom-20 right-20">
+      <button @click="openMeetingModal" type="button" class="active:outline-0 w-16 h-16 rounded-full bg-primary flex justify-center items-center text-white shadow-xl"><span><i class="fa fa-plus"></i></span></button>
+    </div>
     <div class="shadow overflow-x-auto border-b border-gray-200 sm:rounded-lg w-full">
       <table class="min-w-full divide-y divide-gray-200 divide">
         <thead class="bg-gray-50">
@@ -61,18 +64,28 @@
     @close="closeUpdateModal()"
     :meetingData="selectedMeetingData"
 />
+  <AdminMeetingModal
+      v-if="isOpen"
+      @close="closeMeetingModal()"
+  />
+
 </template>
 
 <script>
 import UpdateAllUserMeeting from "@/components/AdminComponents/UpdateAllUserMeeting.vue"
 import {mapActions,mapGetters} from "vuex";
+import AdminMeetingModal from "@/components/AdminComponents/AdminMeetingModal";
 
 
 export default {
-  components: {UpdateAllUserMeeting},
+  components: {UpdateAllUserMeeting,
+              AdminMeetingModal
+
+  },
   data(){
     return{
       isUpdateOpen: false,
+      isOpen:false,
       selectedMeetingData:{
         date:'',
         fromTime:'',
@@ -99,6 +112,9 @@ export default {
     closeUpdateModal() {
       this.isUpdateOpen = false
     },
+    closeMeetingModal(){
+      this.isOpen=false
+    },
     acceptMeeting(meetings){
       const payloads={
         id:meetings.meetingId,
@@ -112,11 +128,16 @@ export default {
         status:"rejected"
       };
       this.meetingDecison(payloads)
+    },
+    openMeetingModal(){
+      this.isOpen = true
+      console.log("aaaaaaaaa")
     }
   },
   created() {
     this.fetchAllMeeting()
-  }
+  },
+
 }
 
 </script>

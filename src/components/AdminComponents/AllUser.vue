@@ -1,13 +1,18 @@
-<template>
+<template class="relative">
   <h3 class="text-4xl text-center font-bold tracking-wide underline-offset-4 text-primary bg-gray-200 shadow-lg p-4">Show All User</h3>
-  <div class="flex flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
+  <div class="absolute bottom-20 right-20">
+    <button @click="openMyModal" type="button" class="active:outline-0 w-16 h-16 rounded-full bg-primary flex justify-center items-center text-white shadow-xl"><span><i class="fa fa-plus"></i></span></button>
+  </div>
+
+  <div class="flex justify-center item-center w-full mt-10">
+    <div>
+      <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
             <tr class="text-center">
-<!--              <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">jatriId</th>-->
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Mobile</th>
@@ -84,18 +89,27 @@
       </div>
     </div>
   </div>
+    </div>
+  </div>
   <AllUserUpdateModal
       v-if="isUpdateOpen"
       @close="closeUpdateModal()"
       :allUserData="selectallUserData"
   />
+  <userCreateModal
+      v-if="isOpen"
+      @close="closeModal()"
+  />
 </template>
 <script>
 import AllUserUpdateModal from "./AllUserUpdateModal.vue"
 import {mapActions,mapGetters} from 'vuex'
+import userCreateModal from "@/components/AdminComponents/userCreateModal";
 export default {
   data(){
     return{
+      image1:require("../../assets/images/plus.png"),
+      isOpen:false,
       isUpdateOpen:false,
       selectallUserData:{
         name:'',
@@ -105,16 +119,19 @@ export default {
         lineManager:'',
         role:'',
         nid:'',
-        _id:''
+        _id:'',
       }
     }
   },
-  components: {AllUserUpdateModal},
+  components: {AllUserUpdateModal,userCreateModal},
   name: "AllUser",
   methods: {
     ...mapActions('adminAllUser',['fetchallAdminUsers']),
     closeUpdateModal() {
       this.isUpdateOpen = false
+    },
+    closeModal(){
+      this.isOpen = false
     },
     updateUserData(userInfo){
       this.isUpdateOpen = true;
@@ -126,6 +143,9 @@ export default {
       this.selectallUserData.role=userInfo.role;
       this.selectallUserData.nid=userInfo.nid;
       this.selectallUserData._id=userInfo._id;
+    },
+    openMyModal(){
+      this.isOpen=true;
     }
   },
   computed:{

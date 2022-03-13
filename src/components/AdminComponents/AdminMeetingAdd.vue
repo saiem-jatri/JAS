@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center items-center mx-auto">
-    <form @submit.prevent ="onSubmit" class="bg-green-100  shadow-md rounded px-8 mt-5 mb-5">
+    <form @submit ="onSubmit" class="bg-green-100  shadow-md rounded px-8 mt-5 mb-5">
       <div class="flex gap-4">
         <div class="mb-4">
           <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
@@ -65,18 +65,6 @@ export default {
       const toTime = this.toTime;
       const comments = this.comments;
       this.addMeeting({date, fromTime, toTime, comments});
-      // console.log("=====>",this.addMeeting)
-      // if(this.addMeeting.message === 'Meeting created successfully'){
-      //   this.$toast.success(`Meeting Added Successfully`);
-      // }else {
-      //   this.$toast.error(`Hey! I'm here`);
-      // }
-
-
-
-      setTimeout(this.$toast.clear, 3000)
-
-      console.log(this.addMeeting)
     }
   }
 

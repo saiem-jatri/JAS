@@ -58,7 +58,12 @@ export default {
       localStorage.setItem('token', response.data.token);
       this.getUserFromApi(response.data.userObj)
       // await store.dispatch('getUserFromApi',response.data.user);
-      await this.$router.push('/HomePage');
+      if(response.data.userObj.role === 'admin'){
+        await this.$router.push('./allUser')
+      }else{
+        await this.$router.push('/HomePage');
+      }
+
       console.log(store.state.login.userData)
     }
   }

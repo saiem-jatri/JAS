@@ -1,16 +1,16 @@
 <template>
 
   <form @submit.prevent="onSubmit">
-    <div class="flex gap-4 bg-green-100 p-6 shadow-lg">
+    <div class="flex justify-evenly bg-primary bg-opacity-80 p-5 shadow-lg">
       <div>
-        <label class="text-sm text-yellow-600 font-bold mb-2">
-          From Time
+        <label class="text-sm text-white font-bold mb-2">
+          From
         </label>
         <input v-model="dateRange.FromDate" type="date" >
       </div>
       <div>
-        <label class="text-sm text-yellow-600 font-bold mb-2">
-          From Time
+        <label class="text-sm text-white font-bold mb-2">
+          To
         </label>
         <input v-model="dateRange.ToDate" type="date" >
       </div>

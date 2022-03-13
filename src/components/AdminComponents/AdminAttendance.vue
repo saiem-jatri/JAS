@@ -1,22 +1,20 @@
 <template>
-  <div class="w-2/5">
-    <form @submit="onSubmit" class="bg-green-100 flex gap-4 shadow-md rounded px-8 mt-5 mb-5">
-      <div class="mb-4">
-        <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
-          Add Time
+  <div class="">
+    <form @submit="onSubmit" class="bg-primary bg-opacity-80 shadow-md rounded px-8 mt-5 mb-5">
+      <div class="flex justify-evenly items-center p-3">
+        <label class="text-white text-xl text-center font-bold mb-2">
+          Entry Time
         </label>
-        <input v-model="addTime" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="time" placeholder="Time is...">
-      </div>
-      <div class="flex w-full items-center justify-between mt-5">
-        <button class="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-          Submit
-        </button>
+        <div class="w-1/3">
+          <input v-model="addTime" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="time" placeholder="Time is...">
+        </div>
+        <div class="">
+          <button class="bg-white text-primary font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline" type="submit">
+            Submit
+          </button>
+        </div>
       </div>
     </form>
-  </div>
-
-  <div>
-
   </div>
 </template>
 
