@@ -51,8 +51,8 @@ export default {
   data(){
     return{
       meetingDate:'',
-      fromTime:'',
-      toTime:'',
+      fromTime:new Date().getHours() + ":" + new Date().getMinutes(),
+      toTime:new Date().getHours() + ":" + new Date().getMinutes(),
       comments:''
     }
   },

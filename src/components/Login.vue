@@ -32,8 +32,12 @@
 
 import axios from "axios";
 import store from "@/store";
-import {mapActions} from "vuex"
-// import login from "@/store/modules/login";
+import {mapActions} from "vuex";
+
+import { io } from "socket.io-client";
+const socket = io("http://localhost:3333", {
+  withCredentials: true,
+});
 
 export default {
   name: "login",
@@ -56,8 +60,8 @@ export default {
       });
       console.log(response);
       localStorage.setItem('token', response.data.token);
-      this.getUserFromApi(response.data.userObj)
-      // await store.dispatch('getUserFromApi',response.data.user);
+      socket.emit("login", localStorage.getItem('token'));
+      this.getUserFromApi(response.data.userObj);
       if(response.data.userObj.role === 'admin'){
         await this.$router.push('./allUser')
       }else{
@@ -65,7 +69,7 @@ export default {
       }
 
       console.log(store.state.login.userData)
-    }
+    },
   }
 
 }

@@ -40,11 +40,18 @@
 <script>
 import {mapGetters, mapMutations} from 'vuex'
 import LogoutDropdown from "@/components/LogoutDropdown";
+import { io } from "socket.io-client";
+const socket = io("http://localhost:3333", {
+  withCredentials: true,
+});
+
+
 export default {
   name: 'Header',
   methods:{
     ...mapMutations('login',['SetLogOut']),
     handleClick(){
+      socket.emit("logout", localStorage.getItem('token'));
       localStorage.removeItem('token');
       this.SetLogOut()
       this.$router.push('/');

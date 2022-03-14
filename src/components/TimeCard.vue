@@ -26,7 +26,7 @@ export default {
   name: "Home",
   data(){
     return{
-      addTime:''
+      addTime:new Date().getHours() + ":" + new Date().getMinutes(),
     }
   },
   methods: {

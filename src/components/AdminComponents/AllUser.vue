@@ -7,6 +7,7 @@
   <div class="flex justify-center item-center w-full mt-10">
     <div>
       <div class="flex flex-col">
+        {{onlineUsersId}}
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
@@ -20,7 +21,9 @@
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">lineManager</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nid</th>
+              <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
               <th scope="col" class="px-6 py-3  text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Update</th>
+
 
             </tr>
             </thead>
@@ -77,6 +80,13 @@
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">{{onlineUsersId.includes(userInfo._id)}}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
                 <!--                    <span  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{meet.status}}</span>-->
                 <button @click="updateUserData(userInfo)" type="button" class="shadow-sm bg-red-200 flex items-center px-2 rounded-lg">Update <span><i class="fa fa-filter"></i></span> </button>
 
@@ -105,6 +115,16 @@
 import AllUserUpdateModal from "./AllUserUpdateModal.vue"
 import {mapActions,mapGetters} from 'vuex'
 import userCreateModal from "@/components/AdminComponents/userCreateModal";
+
+import { io } from "socket.io-client";
+const socket = io("http://localhost:3333", {
+  withCredentials: true,
+});
+
+socket.on("online", (onlineUsersId)=>{
+  console.log("Online Users: ", onlineUsersId);
+});
+
 export default {
   data(){
     return{
@@ -120,7 +140,8 @@ export default {
         role:'',
         nid:'',
         _id:'',
-      }
+      },
+      onlineUsersId:[],
     }
   },
   components: {AllUserUpdateModal,userCreateModal},
@@ -146,13 +167,14 @@ export default {
     },
     openMyModal(){
       this.isOpen=true;
-    }
+    },
   },
   computed:{
     ...mapGetters('adminAllUser',['getAllAdminUsers'])
   },
   created() {
-    this.fetchallAdminUsers()
+    this.newOnline();
+    this.fetchallAdminUsers();
   }
 }
 </script>
