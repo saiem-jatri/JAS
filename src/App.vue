@@ -6,11 +6,14 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import Header from '@/components/Header';
 import axios from "axios";
 
-
 export default {
+  methods: {
+    ...mapActions('admin',['fetchOnlineUsers'])
+  },
   components: {
     Header,
   },

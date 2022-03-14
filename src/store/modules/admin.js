@@ -7,7 +7,7 @@ const state={
 };
   const getters={
     getallDropList: (state) => state.dropList,
-    getallUserList: (state) => state.userlist
+    getallUserList: (state) => state.userlist,
 };
   const actions= {
     async fetchdropList({commit}) {
@@ -19,7 +19,8 @@ const state={
       const response = await axios.post('http://localhost:3333/admin/user/',{jatriId,name,email,password,designation,lineManager,role,nid,mobile}, { withCredentials: true });
       toastMessage(response);
       commit('setnewUser',response.data)
-    }
+    },
+
   };
   const mutations = {
       setdropList:(state,resData) => (state.dropList=resData),
