@@ -23,18 +23,6 @@
         </form>
       </div>
     </div>
-
-<!--    <div class="flex justify-center h-3/5">-->
-<!--      <div class="w-1/2  overflow-auto">-->
-<!--        <table class="relative w-full">-->
-<!--          <thead>-->
-<!--          <tr>-->
-<!--            <th class="sticky top-0 px-6 py-3 text-red-900 bg-red-300">Header</th>-->
-<!--            <th class="sticky top-0 px-6 py-3 text-red-900 bg-red-300">Header</th>-->
-<!--            <th class="sticky top-0 px-6 py-3 text-red-900 bg-red-300">Header</th>-->
-<!--          </tr>-->
-<!--          </thead>-->
-
     <div class="flex h-3/5 justify-center item-center w-full">
       <div class="w-1/2 overflow-auto">
         <table class="min-w-full divide-y divide-gray-200 relative">

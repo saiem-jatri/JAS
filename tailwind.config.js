@@ -6,6 +6,9 @@ module.exports = {
       colors:{
         'primary':"#f04935",
       },
+      fontFamily: {
+        'sans': ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
+      }
     },
     container: {
       center: true,
