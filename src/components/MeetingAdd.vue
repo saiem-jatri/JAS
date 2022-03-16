@@ -1,7 +1,7 @@
 <template>
-    <div class="flex justify-center items-center mx-auto">
-      <form @submit ="onSubmit" class="bg-green-100  shadow-md rounded px-8 mt-5 mb-5">
-        <div class="flex gap-4">
+    <div class="lg:flex lg:justify-center lg:items-center mx-auto">
+      <form @submit ="onSubmit" class="bg-green-100 w-full  shadow-md rounded px-8 mt-5 mb-5">
+        <div class="lg:flex lg:gap-4 w-full">
           <div class="mb-4">
             <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
               Add Date

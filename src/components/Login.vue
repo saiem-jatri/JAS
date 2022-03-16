@@ -60,12 +60,13 @@ export default {
       });
       console.log(response);
       localStorage.setItem('token', response.data.token);
+      console.log("====",response)
       socket.emit("login", localStorage.getItem('token'));
       this.getUserFromApi(response.data.userObj);
       if(response.data.userObj.role === 'admin'){
         await this.$router.push('./allUser')
       }else{
-        await this.$router.push('/HomePage');
+        await this.$router.push('/userInfo');
       }
 
       console.log(store.state.login.userData)

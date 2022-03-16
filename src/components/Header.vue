@@ -49,10 +49,14 @@
                   <router-link class="mx-2" to="/login">login</router-link>
                 </div>
 
-            <div v-if="getUser && getUser.role ==='user'" class="text-sm sm:flex-col ">
-              <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="/HomePage">Home</router-link>
-              <router-link class="mx-2 text-sm shadow-lg hover:text-gray-300" to="/meetingPage">Meeting</router-link>
-              <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm hover:text-gray-300 shadow-lg" >logout</a>
+            <div v-if="getUser && getUser.role ==='user'" class="text-sm w-full flex-grow sm:flex sm:items-center sm:w-auto relative">
+              <router-link class="mx-2 text-sm shadow-lg text-white" to="/HomePage">Home</router-link>
+              <router-link class="mx-2 text-sm shadow-lg text-white" to="/userInfo">User Info</router-link>
+              <router-link class="mx-2 text-sm shadow-lg text-white" to="/meetingPage">Meeting</router-link>
+              <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm shadow-lg text-white" >logout</a>
+              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-xs font-bold text-white">{{getUser.name}}</p>
+              <div :class="open ? 'hidden' : 'block'" class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">
+              </div>
             </div>
             <div v-if="getUser && getUser.role === 'admin'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto relative">
               <router-link class="mx-2 text-sm shadow-lg text-white" to="./allUser">User's </router-link>
@@ -60,7 +64,7 @@
               <router-link class="mx-2 text-sm shadow-lg text-white" to="./allAttendance">Attendance's </router-link>
               <router-link class="mx-2 text-sm shadow-lg text-white" to="./allMeeting">Meeting's </router-link>
               <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm text-white shadow-lg" >logout </a>
-              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-xs font-bold text-white">{{getUser.name}}</p>
+              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-xs font-bold text-white">{{getUser.name.toString().split(' ')[0]}}</p>
               <div :class="open ? 'hidden' : 'block'" class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">
               </div>
             </div>

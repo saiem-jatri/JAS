@@ -10,6 +10,9 @@ import allAttendance from "@/components/AdminComponents/AllAttendance";
 import AllUserDetails from "@/components/AdminComponents/AllUserDetails";
 import AllUserMeeting from "@/components/AdminComponents/AllUserMeeting";
 import AdminMeeting from "@/components/AdminComponents/AdminMeetingAdd";
+import UserInfo from "@/components/UserInfo";
+import UserDashboard from "@/components/UserDashboard";
+import userStatisticsPage from "@/views/userStatisticsPage";
 
 
 const routes=[
@@ -23,6 +26,7 @@ const routes=[
   {path:'/details',component: AllUserDetails},
   {path:'/allMeeting',component: AllUserMeeting},
   {path:'/adminMeeting',component: AdminMeeting},
+  {path:'/userInfo',component: userStatisticsPage},
 ]
 const router = createRouter({
   history: createWebHistory(),
