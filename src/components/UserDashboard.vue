@@ -13,34 +13,34 @@
               <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Percentage</th>
             </tr>
             </thead>
-            <tbody class="bg-white divide divide-gray-200 bg-gray-200 text-white">
-            <tr >
+            <tbody class="bg-primary divide divide-gray-200 bg-gray-200 text-white">
+            <tr v-for="userState in getUserStatistics" :key="userState" >
               <td class="text-sm text-gray-900 bg-blue-400 font-light px-6 py-2 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-white"> </div>
+                    <div class="text-sm font-medium text-black"> {{userState.weekdays}}</div>
                   </div>
                 </div>
               </td>
               <td class="text-sm text-gray-900 bg-green-400 font-light px-6 py-2 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900"></div>
+                    <div class="text-sm font-medium text-gray-900">{{userState.present}}</div>
                   </div>
                 </div>
               </td>
               <td class="text-sm text-gray-900 bg-yellow-400-500 font-light px-6 py-2 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-black"></div>
+                    <div class="text-sm font-medium text-black">{{userState.late}}</div>
                   </div>
                 </div>
               </td>
               <td class="text-sm text-gray-900 bg-red-500 font-light px-6 py-2 whitespace-nowrap">
-                <div class="text-sm text-white"></div>
+                <div class="text-sm text-white">{{userState.absent}}</div>
               </td>
               <td class="text-sm text-white bg-blue-400 font-light px-6 py-2 whitespace-nowrap">
-                <div class="text-sm text-gray-900"></div>
+                <div class="text-sm text-gray-900">{{userState.presentPercentage}}</div>
               </td>
             </tr>
             </tbody>
@@ -52,8 +52,18 @@
 </template>
 
 <script>
+import {mapGetters,mapActions} from 'vuex'
 export default {
-  name: "UserDashboard"
+  name: "UserDashboard",
+  computed:{
+    ...mapGetters('statistics',['getUserStatistics'])
+  },
+  methods: {
+    ...mapActions('statistics',['fetchstatistics']),
+  },
+  created(){
+     this.fetchstatistics();
+  }
 }
 </script>
 

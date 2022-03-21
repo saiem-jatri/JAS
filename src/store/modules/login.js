@@ -1,5 +1,5 @@
 const state = {
-  userData: null,
+  userData: null
 }
 
 const getters = {
