@@ -42,7 +42,7 @@
               <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4 relative">
-                    <span :class="onlineUsersId.includes(userInfo._id) === true ?
+                    <span :class="getOnlineData.includes(userInfo._id) === true ?
                     'w-2 h-2 rounded-full animate-ping  bg-green-700 absolute top-2 -right-5 bottom-5' : ''"></span>
                     <div class="text-sm font-medium text-gray-900">{{userInfo.name}}</div>
                   </div>
@@ -85,8 +85,6 @@
                   </div>
                 </div>
               </td>
-
-
               <td class="text-sm  text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
@@ -136,20 +134,13 @@ export default {
         nid:'',
         _id:'',
       },
-      onlineUsersId:'',
     }
   },
   components: {AllUserUpdateModal,userCreateModal},
   name: "AllUser",
-  sockets: {
-    // Fired when the server sends something on the "messageChannel" channel.
-    online(data) {
-      this.onlineUsersId = data;
-      console.log("Online asdasdas users",data);
-    }
-  },
   methods: {
     ...mapActions('adminAllUser',['fetchallAdminUsers']),
+    ...mapActions('socket',['onlineUserData']),
     closeUpdateModal() {
       this.isUpdateOpen = false
     },
@@ -172,10 +163,12 @@ export default {
     },
   },
   computed:{
-    ...mapGetters('adminAllUser',['getAllAdminUsers'])
+    ...mapGetters('adminAllUser',['getAllAdminUsers']),
+    ...mapGetters('socket',['getOnlineData']),
   },
   created() {
     this.fetchallAdminUsers();
+    this.onlineUserData()
   }
 }
 </script>

@@ -23,6 +23,14 @@ const actions ={
     toastMessage(response);
     commit('newAttendance',response.data)
   },
+
+  async addAdminAttendance({commit},timestamp){
+    const response = await axios.post('http://localhost:3333/admin/attendance',{timestamp}, { withCredentials: true });
+    toastMessage(response);
+    console.log("response data =======>",response.data)
+    commit('newAdminAttendance',response.data)
+  },
+
   async addFilter({commit}, {dateRange}){
     const response = await axios.get(`http://localhost:3333/user/attendance/?from=${dateRange.FromDate}&to=${dateRange.ToDate}`, {withCredentials: true});
     console.log(response.data)
@@ -33,7 +41,8 @@ const actions ={
 const mutations = {
   setAttendance:(state,user) => (state.userAttendance = user),
   newAttendance:(state,resTime) => state.userAttendance.unshift(resTime),
-  setFilter:(state,resData) =>(state.userAttendance = resData)
+  setFilter:(state,resData) =>(state.userAttendance = resData),
+  newAdminAttendance:(state,reponse) =>(state.userAttendance=reponse)
 }
 
 

@@ -6,42 +6,41 @@
           <table class="min-w-full text-center">
             <thead class="border-b">
             <tr class="bg-primary bg-opacity-80">
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Total Days</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Present</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Late</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Absent</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Percentage</th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">WeekDays</th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Present</th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Late</th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Absent</th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Percentage</th>
             </tr>
             </thead>
             <tbody class="bg-primary divide divide-gray-200 bg-gray-200 text-white">
-            <tr v-for="userState in getUserStatistics" :key="userState" >
-
+            <tr >
               <td class="text-sm text-gray-900 bg-blue-400 font-light px-6 py-2 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-black"> {{userState.weekdays}}</div>
+                    <div class="text-sm font-medium text-black"> {{ getAdminDashboard.attendanceStatOwn.weekdays }}</div>
                   </div>
                 </div>
               </td>
               <td class="text-sm text-gray-900 bg-green-400 font-light px-6 py-2 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">{{userState.present}}</div>
+                    <div class="text-sm font-medium text-gray-900">{{getAdminDashboard.attendanceStatOwn.present}}</div>
                   </div>
                 </div>
               </td>
               <td class="text-sm text-gray-900 bg-yellow-400-500 font-light px-6 py-2 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-black">{{userState.late}}</div>
+                    <div class="text-sm font-medium text-black">{{getAdminDashboard.attendanceStatOwn.late}}</div>
                   </div>
                 </div>
               </td>
               <td class="text-sm text-gray-900 bg-red-500 font-light px-6 py-2 whitespace-nowrap">
-                <div class="text-sm text-white">{{userState.absent}}</div>
+                <div class="text-sm text-white">{{getAdminDashboard.attendanceStatOwn.absent}}</div>
               </td>
               <td class="text-sm text-white bg-blue-400 font-light px-6 py-2 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{userState.presentPercentage}}</div>
+                <div class="text-sm text-gray-900">{{getAdminDashboard.attendanceStatOwn.presentPercentage}}</div>
               </td>
             </tr>
             </tbody>
@@ -53,17 +52,18 @@
 </template>
 
 <script>
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters,mapActions} from "vuex";
+
 export default {
-  name: "UserDashboard",
+  name: "AdminDashboard",
   computed:{
-    ...mapGetters('statistics',['getUserStatistics'])
+    ...mapGetters('statistics',['getAdminDashboard'])
   },
   methods: {
-    ...mapActions('statistics',['fetchstatistics']),
+    ...mapActions('statistics',['fetchAdminStatistics']),
   },
   created(){
-     this.fetchstatistics();
+    this.fetchAdminStatistics()
   }
 }
 </script>

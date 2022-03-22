@@ -34,9 +34,9 @@
 
 
 <!--  Phone nav start-->
-    <nav class="flex w-full items-center bg-primary justify-between flex-wrap p-4">
+    <nav class="flex w-full items-center bg-primary justify-between flex-wrap p-6">
         <div class="flex items-center flex-no-shrink text-white mr-6">
-          <a href="./"><img :src="image2" alt="" class="w-20"></a>
+          <a href="#"><img :src="logo" alt="" class="w-20"></a>
         </div>
         <div class="block sm:hidden">
           <button @click="toggle" class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
@@ -45,7 +45,6 @@
         </div>
         <div :class="open ? 'block': 'hidden'" class="w-4/5 flex-grow sm:flex sm:items-center sm:w-auto">
                 <div v-if="!getUser" class="flex gap-4 text-2xl font-semibold justify-end items-center text-white">
-
                   <router-link class="mx-2" to="/login">login</router-link>
                 </div>
 
@@ -60,7 +59,7 @@
             </div>
             <div v-if="getUser && getUser.role === 'admin'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto relative">
               <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/allUser' ? 'text-green-500' : ''" to="./allUser">User's </router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/statistics' ? 'text-green-500' : ''" to="./statistics">Statistics </router-link>
+              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/statistics' ? 'text-green-500' : ''" to="./statistics">Dashboard </router-link>
               <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/adminAttendnance' ? 'text-green-500' : ''" to="./adminAttendnance">AdminAttendnance </router-link>
               <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/allAttendance' ? 'text-green-500' : ''" to="./allAttendance">Attendance's </router-link>
               <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/allMeeting' ? 'text-green-500' : ''" to="./allMeeting">Meeting's </router-link>
@@ -84,8 +83,6 @@ import { io } from "socket.io-client";
 const socket = io("http://localhost:3333", {
   withCredentials: true,
 });
-
-
 export default {
   name: 'Header',
   methods:{
@@ -110,6 +107,7 @@ export default {
     return{
       image1:require("../assets/images/jas_logo (1).png"),
       image2:require("../assets/images/jas-logo-png-transparent.png"),
+      logo:require("../assets/images/logo-white.png"),
       open:false,
     }
   },

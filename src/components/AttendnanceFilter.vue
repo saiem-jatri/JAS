@@ -11,7 +11,7 @@
       </div>
       <div>
         <label class="text-sm text-white font-bold mb-2">
-          From Time
+          To Time
         </label>
         <input v-model="dateRange.ToDate" type="date" >
       </div>

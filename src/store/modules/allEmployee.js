@@ -11,6 +11,7 @@ const getters={
 const actions = {
   async fetchAttendance({commit}) {
     const response = await axios.get(`http://localhost:3333/admin/attendance/all`, {withCredentials: true});
+    console.log("value ======>",response.data)
     commit('setAttendanceToday', response.data);
   },
   async fetchDetails({commit}, id) {

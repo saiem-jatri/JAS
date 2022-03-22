@@ -40,7 +40,7 @@ export default {
   methods:{
 
     onSubmit(){
-      return this.addFilter(this.dateRange);
+       this.addFilter(this.dateRange);
     }
   }
   }

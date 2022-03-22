@@ -3,10 +3,12 @@ import toastMessage from "@/store/common/toaster";
 
 const state = {
   userStatistics: [],
+  adminStatistics: [],
 }
 
 const getters ={
-  getUserStatistics: (state) => state.userStatistics
+  getUserStatistics: (state) => state.userStatistics,
+  getAdminDashboard:(state) => state.adminStatistics
 }
 
 const actions ={
@@ -14,11 +16,17 @@ const actions ={
     const response = await axios.get(`http://localhost:3333/user/dashboard`, {withCredentials: true});
     console.log("heloooooooo =======>",response.data)
     commit('setStatistics',response.data)
+  },
+  async fetchAdminStatistics({commit}){
+    const response = await axios.get(`http://localhost:3333/admin/dashboard`,{withCredentials:true});
+    console.log("Admin Statistics =======>",response.data)
+    commit('setAdminStatistics',response.data)
   }
 }
 
 const mutations = {
   setStatistics:(state,statistics) => (state.userStatistics = statistics),
+  setAdminStatistics:(state,adminStatistics) => (state.adminStatistics = adminStatistics),
 }
 
 

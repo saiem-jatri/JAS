@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <form @submit="onSubmit">
+    <form @submit.prevent="onSubmit">
       <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary bg-opacity-80 p-4 mt-5 lg:mt-0 shadow-lg w-1/2 lg:w-full">
         <label class="text-white text-xl text-center font-bold mb-2">
           Entry Time
@@ -29,7 +29,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('attendance',['addAttendance']),
+    ...mapActions('attendance',['addAdminAttendance']),
     onSubmit(){
       // creating timestamp
       const time = this.addTime;

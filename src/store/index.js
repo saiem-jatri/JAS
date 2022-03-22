@@ -10,6 +10,7 @@ import allEmployee from "@/store/modules/allEmployee";
 import allEmployeeMeeting from "@/store/modules/allEmloyeeMeeting";
 import adminMeeting from "@/store/modules/adminMeeting";
 import statistics from "@/store/modules/statistics";
+import socket from "@/store/modules/socket";
 
 
 const store = createStore({
@@ -23,7 +24,8 @@ const store = createStore({
     allEmployee,
     allEmployeeMeeting,
     adminMeeting,
-    statistics
+    statistics,
+    socket
   }
 })
 
