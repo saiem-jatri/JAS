@@ -2,7 +2,7 @@
 
   <form @submit.prevent="onSubmit">
 
-    <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary bg-opacity-80 p-4 shadow-lg w-1/2 lg:w-full">
+    <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary  p-6 shadow-lg lg:w-full">
       <div>
         <label class="text-sm text-white font-bold mb-2">
           From Time

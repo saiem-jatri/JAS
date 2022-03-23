@@ -10,7 +10,7 @@
         <div class="overflow-hidden">
           <table class="min-w-full text-center shadow-xl">
             <thead class="border-b">
-            <tr class="bg-primary bg-opacity-80">
+            <tr class="bg-primary">
               <th scope="col" class="text-md font-medium text-white px-6 py-4">
                 Name
               </th>
@@ -93,7 +93,7 @@
                 </div>
               </td>
               <td class="text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <button @click="updateUserData(userInfo)" type="button" class="shadow-sm bg-red-200 flex items-center px-2 rounded-lg">Update <span><i class="fa fa-filter"></i></span> </button>
+                <button @click="updateUserData(userInfo)" type="button" class="focus:outline-none flex items-center px-2 rounded-lg"><img :src="updateImage" alt="" class="w-6 h-6"> </button>
               </td>
             </tr>
             </tbody>
@@ -124,6 +124,7 @@ export default {
       isOpen:false,
       i:0,
       isUpdateOpen:false,
+      updateImage:require("@/assets/images/edit-1.png"),
       selectallUserData:{
         name:'',
         email:'',

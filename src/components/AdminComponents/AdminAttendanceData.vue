@@ -1,42 +1,34 @@
 <template>
-  <div class="flex flex-col shadow-xl">
-    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="overflow-hidden">
-          <table class="min-w-full text-center">
-            <thead class="border-b">
-                <tr class="bg-primary bg-opacity-80">
-                  <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Date</th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Entry Time</th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-medium text-white uppercase tracking-wider">Status</th>
-                </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-
-                <tr :class="++i%2 === 0 ? '' :'bg-gray-200'" v-for="attendance in allUserAttendance.attendances" :key="attendance">
-                  <td class="text-sm text-gray-900 bg-yellow-400-500 font-light px-6 py-2 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">{{attendance.timeDate.split("T")[0]}} </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-sm text-gray-900 bg-yellow-400-500 font-light px-6 py-2 whitespace-nowrap">
-                    <div class="text-sm text-gray-900"> {{(new Date(attendance.timeDate) + addTime).split(" ")[4]}}  </div>
-                  </td>
-                  <td class="text-sm text-gray-900 bg-yellow-400-500 font-light px-6 py-2 whitespace-nowrap">
-                    <span :class="attendance.status === 'late'? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{attendance.status}}</span>
-                  </td>
-                </tr>
-
-
-                <!-- More people... -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10 shadow-lg">
+    <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-white uppercase bg-primary dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Date
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Entry Time
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Status
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr :class="++i%2 === 0 ? '' :'bg-gray-200'" v-for="attendance in allAdminAttendance.attendances" :key="attendance" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+          {{attendance.timeDate.split("T")[0]}}
+        </td>
+        <td class="px-6 py-4">
+          {{(new Date(attendance.timeDate) + addTime).split(" ")[4]}}
+        </td>
+        <td class="px-6 py-4">
+          <span :class="attendance.status === 'late'? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{attendance.status}}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -52,13 +44,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions('attendance',['fetchAttendance']),
+    ...mapActions('attendance',['fetchAdminAttendance']),
   },
   computed:{
-    ...mapGetters('attendance', ['allUserAttendance'])
+    ...mapGetters('attendance', ['allAdminAttendance'])
   },
   created() {
-    this.fetchAttendance();
+    this.fetchAdminAttendance();
   }
 }
 </script>

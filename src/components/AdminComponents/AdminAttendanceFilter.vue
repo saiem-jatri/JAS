@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="onSubmit">
 
-      <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary bg-opacity-80 p-4 shadow-lg lg:w-full">
+      <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary  p-6 shadow-lg lg:w-full">
         <div>
           <label class="text-sm text-white font-bold mb-2">
             From Time
@@ -34,13 +34,13 @@ export default {
     }
   },
   computed:{
-    ...mapGetters('attendance', ['allUserAttendance']),
-    ...mapActions('attendance', ['addFilter'])
+    ...mapGetters('attendance', ['addAdminAttendance']),
+    ...mapActions('attendance', ['addAdminAttendanceFilter'])
   },
   methods:{
 
     onSubmit(){
-       this.addFilter(this.dateRange);
+       this.addAdminAttendanceFilter(this.dateRange);
     }
   }
   }

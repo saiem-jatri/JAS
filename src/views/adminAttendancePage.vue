@@ -1,9 +1,14 @@
 <template>
-  <h2 class="text-md lg:text-4xl text-center font-bold tracking-wide underline-offset-4 text-primary bg-gray-200 shadow-lg p-4">Hello Admin This is your Attendnance page</h2>
+  <h2 class="text-md lg:text-4xl text-center font-bold tracking-wide underline-offset-4 text-primary bg-gray-200 shadow-lg p-4">Admin Attendance page</h2>
   <div class=" gap-4 mt-10">
-    <div class="lg:w-1/2 lg:flex lg:flex-col lg:justify-center gap-4">
-      <AdminAttendnanceFilter/>
-      <AdminAttendnance/>
+    <div class="lg:w-full lg:flex lg:flex lg:justify-between gap-4">
+      <div class="lg:w-1/2 w-full">
+        <AdminAttendnanceFilter/>
+      </div>
+      <div class="lg:w-1/2 w-full">
+        <AdminAttendnance/>
+      </div>
+
     </div>
     <div class="w-full">
       <AdminAttendnanceData/>

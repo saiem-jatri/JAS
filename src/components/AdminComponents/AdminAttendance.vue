@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <form @submit.prevent="onSubmit">
-      <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary bg-opacity-80 p-4 mt-5 lg:mt-0 shadow-lg w-1/2 lg:w-full">
+    <form @submit="onSubmit">
+      <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary p-4 mt-5 lg:mt-0 shadow-lg lg:w-full">
         <label class="text-white text-xl text-center font-bold mb-2">
           Entry Time
         </label>
@@ -35,8 +35,7 @@ export default {
       const time = this.addTime;
       console.log(time)
       const timestamp = new Date().toISOString().split("T")[0] + "T" + time;
-
-      this.addAttendance(timestamp);
+      this.addAdminAttendance(timestamp);
     }
   }
 }
