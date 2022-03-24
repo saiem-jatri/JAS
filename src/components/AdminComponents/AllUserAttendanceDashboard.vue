@@ -1,53 +1,48 @@
 <template>
-  <div class="flex flex-col shadow-xl">
-    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="overflow-hidden">
-          <table class="min-w-full text-center">
-            <thead class="border-b">
-            <tr class="bg-primary bg-opacity-80">
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Total Employees</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Present</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Late</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Absent</th>
-              <th scope="col" class="px-6 py-3 text-left text-md font-medium text-blue-800 font-bold uppercase tracking-wider">Percentage</th>
-            </tr>
-            </thead>
-            <tbody class="bg-primary divide divide-gray-200 bg-gray-200 text-white">
-            <tr >
-              <td class="text-sm text-gray-900 bg-blue-400 font-light px-6 py-2 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-black"> {{ getAdminDashboard.attendanceStatAll.totalEmployee }}</div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-sm text-gray-900 bg-green-400 font-light px-6 py-2 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">{{getAdminDashboard.attendanceStatAll.present}}</div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-sm text-gray-900 bg-yellow-400-500 font-light px-6 py-2 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-black">{{getAdminDashboard.attendanceStatAll.late}}</div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-sm text-gray-900 bg-red-500 font-light px-6 py-2 whitespace-nowrap">
-                <div class="text-sm text-white">{{getAdminDashboard.attendanceStatAll.absent}}</div>
-              </td>
-              <td class="text-sm text-white bg-blue-400 font-light px-6 py-2 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{getAdminDashboard.attendanceStatAll.presentPercentage}}</div>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-10 shadow-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-white uppercase bg-primary dark:bg-gray-700 dark:text-gray-400">
+      <tr class="text-center">
+        <th class="px-4 py-3 text-white text-2xl"  colspan="5">All User Attendance Dashboard</th>
+      </tr>
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Total Employees
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Present
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Late
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Absent
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Persentage
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+          {{ getAdminDashboard.attendanceStatAll.totalEmployee }}
+        </th>
+        <td class="px-6 py-4">
+          {{getAdminDashboard.attendanceStatAll.present}}
+        </td>
+        <td class="px-6 py-4">
+          {{getAdminDashboard.attendanceStatAll.late}}
+        </td>
+        <td class="px-6 py-4">
+          {{getAdminDashboard.attendanceStatAll.absent}}
+        </td>
+        <td class="px-6 py-4 ">
+          {{getAdminDashboard.attendanceStatAll.presentPercentage}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

@@ -50,9 +50,6 @@
               <span :class="attendance.status === 'late'? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">{{attendance.status}}</span>
             </td>
           </tr>
-
-
-          <!-- More people... -->
           </tbody>
         </table>
       </div>

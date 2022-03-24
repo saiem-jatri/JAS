@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <form @submit="onSubmit">
+    <form @submit.prevent="onSubmit">
       <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary p-4 mt-5 lg:mt-0 shadow-lg lg:w-full">
         <label class="text-white text-xl text-center font-bold mb-2">
           Entry Time
@@ -30,13 +30,17 @@ export default {
   },
   methods: {
     ...mapActions('attendance',['addAdminAttendance']),
-    onSubmit(){
+   async onSubmit(){
       // creating timestamp
       const time = this.addTime;
       console.log(time)
       const timestamp = new Date().toISOString().split("T")[0] + "T" + time;
-      this.addAdminAttendance(timestamp);
-    }
+    await this.addAdminAttendance(timestamp);
+   await this.reloadPage()
+    },
+    reloadPage() {
+      window.location.reload();
+    },
   }
 }
 </script>

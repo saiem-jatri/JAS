@@ -29,16 +29,23 @@ const actions ={
     commit('setAdminAttendance',response.data);
   },
   async addAttendance({commit},timestamp){
-    const response = await axios.post('http://localhost:3333/user/attendance',{timestamp}, { withCredentials: true });
-    toastMessage(response);
-    commit('newAttendance',response.data)
+    try {
+      const response = await axios.post('http://localhost:3333/user/attendance',{timestamp}, { withCredentials: true });
+      await toastMessage(response);
+      commit('newAttendance',response.data);
+    } catch (err) {
+      await toastMessage(err.response.data);
+    }
   },
 
   async addAdminAttendance({commit},timestamp){
-    const response = await axios.post('http://localhost:3333/admin/attendance',{timestamp}, { withCredentials: true });
-    toastMessage(response);
-    console.log("response data =======>",response.data)
-    commit('newAdminAttendance',response.data)
+    try{
+      const response = await axios.post('http://localhost:3333/admin/attendance',{timestamp}, { withCredentials: true });
+     await toastMessage(response);
+      commit('newAdminAttendance',response.data)
+    }catch (err) {
+      await toastMessage(err.response.data);
+    }
   },
 
   async addFilter({commit}, {dateRange}){

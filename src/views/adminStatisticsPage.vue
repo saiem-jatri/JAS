@@ -1,29 +1,18 @@
 <template>
-  <div class="lg:flex lg:justify-between lg:items-center">
-    <div class="flex justify-center items-center w-full mx-auto">
-      <UserInfo/>
-    </div>
+ <div class="h-5/6">
+   <div class="lg:flex lg:justify-between gap-10 lg:items-center">
+     <div class="lg:w-1/4 w-full">
+       <UserInfo/>
+     </div>
 
-    <div>
-      <div class="flex items-center mt-4 text-gray-700 gap-2">
-        <h3 class="text-2xl font-bold text-primary">Admin Attendance Dashboard </h3>
-        <img :src="arrow" alt="" class="w-6">
-      </div>
-      <AdminDashboard/>
-      <div class="flex items-center mt-10 text-gray-700 gap-2">
-        <h3 class="text-2xl font-bold text-primary">All User Attendance Dashboard </h3>
-        <img :src="arrow" alt="" class="w-6">
-      </div>
-      <AllUserAttendanceDashboard/>
+     <div class="lg:w-3/4 w-full h-screen overflow-y-auto">
+       <AdminDashboard/>
+       <AllUserAttendanceDashboard/>
+       <AllUserMeetingDashboard/>
+     </div>
 
-      <div class="flex items-center mt-10 text-gray-700 gap-2">
-        <h3 class="text-2xl font-bold text-primary">All User Meeting Dashboard </h3>
-        <img :src="arrow" alt="" class="w-6">
-      </div>
-      <AllUserMeetingDashboard/>
-    </div>
-
-  </div>
+   </div>
+ </div>
 </template>
 
 <script>
