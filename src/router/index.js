@@ -18,6 +18,7 @@ import adminStatisticsPage from "@/views/adminStatisticsPage";
 
 const routes=[
   {path:'/',component:login},
+  {path:'/login',component:login},
   {path:'/HomePage',component:HomePage},
   {path:'/meetingPage',component:meetingPage},
   {path:'/adminHomePage',component:adminHomePage},

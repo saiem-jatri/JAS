@@ -35,6 +35,7 @@ import store from "@/store";
 import {mapActions} from "vuex";
 
 import { io } from "socket.io-client";
+import toastMessage from "@/store/common/toaster";
 const socket = io("http://localhost:3333", {
   withCredentials: true,
 });
@@ -49,27 +50,29 @@ export default {
   },
   methods: {
     ...mapActions('login', ['getUserFromApi']),
+
     async handleSubmit() {
+      try{
+        const response = await axios.post('http://localhost:3333/login', {
+          username: this.username,
+          password: this.password
 
-      const response = await axios.post('http://localhost:3333/login', {
-        username: this.username,
-        password: this.password
-
-      }, {
-        withCredentials: true //correct
-      });
-      console.log(response);
-      localStorage.setItem('token', response.data.token);
-      console.log("====",response)
-      socket.emit("login", localStorage.getItem('token'));
-      this.getUserFromApi(response.data.userObj);
-      if(response.data.userObj.role === 'admin'){
-        await this.$router.push('./allUser')
-      }else{
-        await this.$router.push('/userInfo');
+        }, {
+          withCredentials: true //correct
+        });
+        await toastMessage(response);
+        localStorage.setItem('token', response.data.token);
+        socket.emit("login", localStorage.getItem('token'));
+        this.getUserFromApi(response.data.userObj);
+        if(response.data.userObj.role === 'admin'){
+          await this.$router.push('./statistics')
+        }else{
+          await this.$router.push('/HomePage');
+        }
+      }catch (err) {
+        await toastMessage(err.response.data);
       }
 
-      console.log(store.state.login.userData)
     },
   }
 

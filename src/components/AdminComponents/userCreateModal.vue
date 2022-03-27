@@ -100,9 +100,14 @@ export default {
       const role = this.role;
       const nid = this.nid;
       this.addUser({jatriId,name,email,password,designation,lineManager,role,nid,mobile})
+      this.$emit('close')
+      this.reloadPage()
     },
     close() {
       this.$emit('close')
+    },
+    reloadPage(){
+      window.location.reload();
     }
   },
 

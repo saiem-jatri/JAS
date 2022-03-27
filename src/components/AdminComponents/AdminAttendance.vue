@@ -1,4 +1,8 @@
 <template>
+  <div class="absolute bottom-20 right-20 ">
+    <router-link class="mx-2 text-sm shadow-lg text-white active:outline-0 w-16 h-16 rounded-full bg-primary flex justify-center items-center text-white shadow-xl" :class="$route.path ==='/allAttendance' ? 'text-green-500' : ''" to="./allAttendance"><img :src="detailsImage" alt="" class="w-10"> </router-link>
+<!--    <button @click="" type="button" class="active:outline-0 w-16 h-16 rounded-full bg-primary flex justify-center items-center text-white shadow-xl"><span> <img :src="detailsImage" alt="" class="w-10"></span></button>-->
+  </div>
   <div class="">
     <form @submit.prevent="onSubmit">
       <div class="justify-center items-center lg:flex mx-auto lg:justify-evenly bg-primary p-4 mt-5 lg:mt-0 shadow-lg lg:w-full">
@@ -26,6 +30,7 @@ export default {
   data(){
     return{
       addTime: new Date().getHours() + ":" + new Date().getMinutes(),
+      detailsImage:require('@/assets/images/details_black.png')
     }
   },
   methods: {
@@ -36,11 +41,14 @@ export default {
       console.log(time)
       const timestamp = new Date().toISOString().split("T")[0] + "T" + time;
     await this.addAdminAttendance(timestamp);
-   await this.reloadPage()
+    await this.reloadPage()
     },
     reloadPage() {
       window.location.reload();
     },
+    routeToAttendance(){
+
+    }
   }
 }
 </script>

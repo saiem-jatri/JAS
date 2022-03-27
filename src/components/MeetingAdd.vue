@@ -1,21 +1,21 @@
 <template>
     <div class="lg:flex lg:justify-center lg:items-center mx-auto">
-      <form @submit ="onSubmit" class="bg-green-100 w-full  shadow-md rounded px-8 mt-5 mb-5">
+      <form @submit ="onSubmit" class="bg-primary w-full  shadow-md rounded px-8 mt-5 mb-5 p-2">
         <div class="lg:flex lg:gap-4 w-full">
           <div class="mb-4">
-            <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
+            <label class="block text-white text-xl text-center font-bold mb-2">
               Add Date
             </label>
             <input v-model="meetingDate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date" placeholder="Time is...">
           </div>
           <div class="mb-4">
-            <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
+            <label class="block text-white text-xl text-center font-bold mb-2">
               From Time
             </label>
             <input v-model="fromTime" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="time" placeholder="Time is...">
           </div>
           <div class="mb-4">
-            <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
+            <label class="block text-white text-xl text-center font-bold mb-2">
               To Time
             </label>
             <input v-model="toTime" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="time" placeholder="Time is...">
@@ -23,10 +23,10 @@
 
         </div>
         <div>
-          <h3 v-if="toTime <= fromTime" :class="toTime >= fromTime ? 'display' : 'none'" class="text-red-600 font-bold">To Time Must Greater than fromTime!!</h3>
+          <h3 v-if="toTime <= fromTime" :class="toTime >= fromTime ? 'display' : 'none'" class="text-red-600 bg-white font-bold">To Time Must Greater than fromTime!!</h3>
         </div>
         <div class="mb-4">
-          <label class="block text-yellow-600 text-xl text-center font-bold mb-2">
+          <label class="block text-white text-xl text-center font-bold mb-2">
             Comments
           </label>
           <textarea v-model="comments" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  placeholder="Add Your Comment here..."></textarea>
@@ -35,7 +35,7 @@
           <button v-if="toTime <= fromTime" class="bg-gray-400 cursor-not-allowed select-none  text-white font-bold py-2 px-12 rounded-full focus:outline-none focus:shadow-outline">
             Submit
           </button>
-          <button v-else class="bg-primary text-white font-bold py-2 px-12 rounded-full focus:outline-none focus:shadow-outline" type="submit">
+          <button v-else class="bg-white text-primary font-bold py-2 px-12 rounded-full focus:outline-none focus:shadow-outline" type="submit">
             Submit
           </button>
         </div>

@@ -5,7 +5,7 @@
         <div class="overflow-hidden">
           <table class="min-w-full text-center shadow-xl">
             <thead class="border-b">
-                <tr class="bg-primary bg-opacity-80">
+                <tr class="bg-primary">
                   <th scope="col" class="text-md font-medium text-white px-6 py-4">Date</th>
                   <th scope="col" class="text-md font-medium text-white px-6 py-4">From Time</th>
                   <th scope="col" class="text-md font-medium text-white px-6 py-4">To Time</th>

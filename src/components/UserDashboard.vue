@@ -3,7 +3,7 @@
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-white uppercase bg-primary dark:bg-gray-700 dark:text-gray-400">
       <tr class="text-center">
-        <th class="px-4 py-3 text-white text-2xl"  colspan="5">Your Attendance Dashboard</th>
+        <th class="px-4 py-3 text-white text-2xl"  colspan="5">Attendances</th>
       </tr>
       <tr>
         <th scope="col" class="px-6 py-3">
@@ -51,7 +51,7 @@
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-white uppercase bg-primary dark:bg-gray-700 dark:text-gray-400">
       <tr class="text-center">
-        <th class="px-4 py-3 text-white text-2xl"  colspan="5"> Your Meeting Dashboard</th>
+        <th class="px-4 py-3 text-white text-2xl"  colspan="5"> Meetings</th>
       </tr>
       <tr>
         <th scope="col" class="px-6 py-3">

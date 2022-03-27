@@ -34,7 +34,7 @@
 
 
 <!--  Phone nav start-->
-    <nav class="flex w-full items-center bg-primary justify-between flex-wrap p-6">
+    <nav class="flex w-full items-center bg-primary justify-between flex-wrap p-6 sticky top-0 z-50">
         <div class="flex items-center flex-no-shrink text-white mr-6">
           <a href="#"><img :src="logo" alt="" class="w-20"></a>
         </div>
@@ -48,23 +48,24 @@
                   <router-link class="mx-2" to="/login">login</router-link>
                 </div>
 
-            <div v-if="getUser && getUser.role ==='user'" class="text-sm w-full flex-grow sm:flex sm:items-center sm:w-auto relative">
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/HomePage' ? 'text-green-500' : ''" to="/HomePage">Home</router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/userInfo' ? 'text-green-500' : ''" to="/userInfo">User Info</router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/meetingPage' ? 'text-green-500' : ''" to="/meetingPage">Meeting</router-link>
-              <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm shadow-lg text-white" >logout</a>
-              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-xs font-bold text-white">{{getUser.name}}</p>
+            <div v-if="getUser && getUser.role ==='user'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto relative">
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/HomePage' ? 'text-green-500' : ''" to="/HomePage">Home</router-link>
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/userInfo' ? 'text-green-500' : ''" to="/userInfo">User Info</router-link>
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/meetingPage' ? 'text-green-500' : ''" to="/meetingPage">Meeting</router-link>
+              <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm shadow-lg text-white" >LOGOUT</a>
+              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-md font-bold text-white">{{getUser.name}}
+                <br><span :class='text_css'> ({{getUser.role}})</span></p>
               <div :class="open ? 'hidden' : 'block'" class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">
               </div>
             </div>
             <div v-if="getUser && getUser.role === 'admin'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto relative">
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/allUser' ? 'text-green-500' : ''" to="./allUser">User's </router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/statistics' ? 'text-green-500' : ''" to="./statistics">Dashboard </router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/adminAttendnance' ? 'text-green-500' : ''" to="./adminAttendnance">AdminAttendnance </router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/allAttendance' ? 'text-green-500' : ''" to="./allAttendance">Attendance's </router-link>
-              <router-link class="mx-2 text-sm shadow-lg text-white" :class="$route.path ==='/allMeeting' ? 'text-green-500' : ''" to="./allMeeting">Meeting's </router-link>
-              <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm text-white shadow-lg" >logout </a>
-              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-xs font-bold text-white">{{getUser.name}}</p>
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/statistics' ? 'text-green-500' : ''" to="./statistics">Dashboard </router-link>
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/allUser' ? 'text-green-500' : ''" to="./allUser">Users</router-link>
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/adminAttendnance' ? 'text-green-500' : ''" to="./adminAttendnance">Attendnance </router-link>
+              <router-link class="mx-2 text-md shadow-lg text-white" :class="$route.path ==='/allMeeting' ? 'text-green-500' : ''" to="./allMeeting">Meetings </router-link>
+              <a href="javascript:void(0)" @click="handleClick" class="mx-2 text-sm text-white shadow-lg" >LOGOUT </a>
+              <p :class="open ? 'hidden' : 'block'" class=" ml-auto top-0 right-2 text-md font-bold text-white">{{getUser.name}}
+                <br><span :class='text_css'> ({{getUser.role}})</span></p>
               <div :class="open ? 'hidden' : 'block'" class="w-2 h-2 rounded-full animate-ping  bg-green-700 absolute -top-2 right-0 bottom-5">
               </div>
             </div>
@@ -109,6 +110,7 @@ export default {
       image2:require("../assets/images/jas-logo-png-transparent.png"),
       logo:require("../assets/images/logo-white.png"),
       open:false,
+      text_css:'text-xs flex justify-right items-right'
     }
   },
   // created() {

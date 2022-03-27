@@ -14,7 +14,6 @@ const actions ={
     const socket = io("http://localhost:3333", {withCredentials: true});
     socket.on("online", (data)=>{
       commit('setOnlineData',data)
-      console.log("=======>",data)
     });
 
   },

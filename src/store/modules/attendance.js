@@ -14,25 +14,37 @@ const getters ={
 
 const actions ={
   async fetchAttendance ({commit}){
-    const date = new Date();
-    const to = new Date().toISOString().split("T")[0];
-    const from = new Date(new Date().setDate(date.getDate() - 8)).toISOString().split("T")[0];
-    const response = await axios.get(`http://localhost:3333/user/attendance/?from=${from}&to=${to}`, { withCredentials: true });
-    commit('setAttendance',response.data);
+    try{
+      const date = new Date();
+      const to = new Date().toISOString().split("T")[0];
+      const from = new Date(new Date().setDate(date.getDate() - 8)).toISOString().split("T")[0];
+      const response = await axios.get(`http://localhost:3333/user/attendance/?from=${from}&to=${to}`, { withCredentials: true });
+      commit('setAttendance',response.data);
+    } catch (error) {
+      commit('setAttendance', []);
+      await toastMessage(error.response.data);
+    }
+
   },
 
   async fetchAdminAttendance ({commit}){
-    const date = new Date();
-    const to = new Date().toISOString().split("T")[0];
-    const from = new Date(new Date().setDate(date.getDate() - 8)).toISOString().split("T")[0];
-    const response = await axios.get(`http://localhost:3333/admin/attendance/?from=${from}&to=${to}`, { withCredentials: true });
-    commit('setAdminAttendance',response.data);
+    try{
+      const date = new Date();
+      const to = new Date().toISOString().split("T")[0];
+      const from = new Date(new Date().setDate(date.getDate() - 8)).toISOString().split("T")[0];
+      const response = await axios.get(`http://localhost:3333/admin/attendance/?from=${from}&to=${to}`, { withCredentials: true });
+      commit('setAdminAttendance',response.data);
+    }catch (error) {
+      commit('setAdminAttendance',[]);
+      await toastMessage(error.response.data)
+    }
   },
   async addAttendance({commit},timestamp){
     try {
+      commit('newAttendance',[]);
       const response = await axios.post('http://localhost:3333/user/attendance',{timestamp}, { withCredentials: true });
       await toastMessage(response);
-      commit('newAttendance',response.data);
+      commit('newAttendance',response.data.attendance);
     } catch (err) {
       await toastMessage(err.response.data);
     }
@@ -41,6 +53,7 @@ const actions ={
   async addAdminAttendance({commit},timestamp){
     try{
       const response = await axios.post('http://localhost:3333/admin/attendance',{timestamp}, { withCredentials: true });
+
      await toastMessage(response);
       commit('newAdminAttendance',response.data)
     }catch (err) {
@@ -50,19 +63,17 @@ const actions ={
 
   async addFilter({commit}, {dateRange}){
     const response = await axios.get(`http://localhost:3333/user/attendance/?from=${dateRange.FromDate}&to=${dateRange.ToDate}`, {withCredentials: true});
-    console.log(response.data)
     commit('setFilter',response.data)
   },
   async addAdminAttendanceFilter({commit}, {dateRange}){
     const response = await axios.get(`http://localhost:3333/admin/attendance/?from=${dateRange.FromDate}&to=${dateRange.ToDate}`,{withCredentials: true});
-    console.log(response.data)
     commit('setAdminAttendanceFilter',response.data)
   }
 }
 
 const mutations = {
   setAttendance:(state,user) => (state.userAttendance = user),
-  newAttendance:(state,resTime) => state.userAttendance.unshift(resTime),
+  newAttendance:(state,resTime) => (state.userAttendance.unshift(resTime)),
   setFilter:(state,resData) =>(state.userAttendance = resData),
   newAdminAttendance:(state,response) =>(state.adminAttendance=response),
   setAdminAttendance:(state,adminAttendance) =>(state.adminAttendance = adminAttendance),

@@ -34,10 +34,10 @@ export default {
     async onSubmit(){
       // creating timestamp
       const time = this.addTime;
-      console.log("TIME ", time)
       const timestamp = new Date().toISOString().split("T")[0] + "T" + time;
+      console.log("time is=====>",timestamp)
       await this.addAttendance(timestamp);
-      this.reloadPage()
+      await this.reloadPage()
     },
     reloadPage() {
       window.location.reload();
